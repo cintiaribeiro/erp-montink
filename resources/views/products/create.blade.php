@@ -45,8 +45,10 @@
                         </div>
                     </div>
                     <hr>
-                    <div class="col-md-12 d-flex justify-content-end" >
+                    <div class="col-md-12 d-flex justify-content-end gap-3">
                         <button type="submit" class="btn btn-green">Cadastrar produto</button>
+                        <a href="{{ route('products.index') }}" class="btn btn-pink">Voltar</a>
+
                     </div>
                 </form>
             </div>
