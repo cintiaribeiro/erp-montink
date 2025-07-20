@@ -13,8 +13,6 @@
                     <thead>
                         <tr>
                             <th>Nome</th>
-                            <th>Variações</th>
-                            <th>Estoque</th>
                             <th>Preço</th>
                             <th>Ações</th>
                         </tr>
@@ -23,10 +21,10 @@
                         @forelse ($products as $product)
                             <tr>
                                 <td>{{ $product->name }}</td>
-                                <td></td>
-                                <td></td>
+
                                 <td>{{ $product->price }}</td>
                                 <td>
+                                    <a href="{{ route('products.show', $product->uuid) }}" class="btn btn-blue">Visualizar</a>
                                     <a href="{{ route('products.edit', $product->uuid) }}" class="btn btn-blue">Editar</a>
                                     <form action="{{ route('products.destroy', $product->uuid) }}" method="POST" class="d-inline" onsubmit="return confirm('Tem certeza que deseja excluir o produto?')">
                                         @csrf

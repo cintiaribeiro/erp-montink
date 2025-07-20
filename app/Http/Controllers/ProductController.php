@@ -27,6 +27,11 @@ class ProductController extends Controller
         return $this->productService->storeProduct($request);
     }
 
+    public function show(Product $product)
+    {
+        return $this->productService->showProduct($product);
+    }
+
     public function edit(Product $product)
     {
         return $this->productService->editProduct($product);

@@ -27,14 +27,14 @@
                         <div class="row variation-item">
                             <div class="col-md-5">
                                 <div class="mb-3">
-                                    <label for="stock[0]['variation']" class="form-label">Variação</label>
-                                    <input type="text" class="form-control" name="stock[0]['variation']"></input>
+                                    <label for="stock[0][variation]" class="form-label">Variação</label>
+                                    <input type="text" class="form-control" name="stock[0][variation]">
                                 </div>
                             </div>
                             <div class="col-md-5">
                                 <div class="mb-3">
-                                    <label for="stock[0]['amount']" class="form-label">Quantidade</label>
-                                    <input type="text" class="form-control" name="stock[0]['amount']"></input>
+                                    <label for="stock[0][amount]" class="form-label">Quantidade</label>
+                                    <input type="text" class="form-control" name="stock[0][amount]">
                                 </div>
                             </div>
                             <div class="col-md-2 d-flex align-items-end justify-content-end">
@@ -93,14 +93,14 @@
                 div.innerHTML = `
                     <div class="col-md-5">
                         <div class="mb-3">
-                            <label for="stock[0]['variation']" class="form-label">Variação</label>
-                            <input type="text" class="form-control" name="stock[0]['variation']"></input>
+                            <label for="stock[${index}][variation]" class="form-label">Variação</label>
+                            <input type="text" class="form-control" name="stock[${index}][variation]">
                         </div>
                     </div>
                     <div class="col-md-5">
                         <div class="mb-3">
-                            <label for="stock[0]['amount']" class="form-label">Quantidade</label>
-                            <input type="text" class="form-control" name="stock[0]['amount']"></input>
+                            <label for="stock[${index}][amount]" class="form-label">Quantidade</label>
+                            <input type="text" class="form-control" name="stock[${index}][amount]">
                         </div>
                     </div>
                     <div class="col-md-2 d-flex align-items-end justify-content-end">
@@ -109,7 +109,7 @@
                         </div>
                     </div>
                 `;
-
+                index++;
                 return div;
             }
 

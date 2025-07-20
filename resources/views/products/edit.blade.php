@@ -24,27 +24,51 @@
                             </div>
                         </div>
                     </div>
-{{--                    <div id="variations">--}}
-{{--                        <div class="row variation-item">--}}
-{{--                            <div class="col-md-5">--}}
-{{--                                <div class="mb-3">--}}
-{{--                                    <label for="stock[0]['variation']" class="form-label">Variação</label>--}}
-{{--                                    <input type="text" class="form-control" name="stock[0]['variation']"></input>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                            <div class="col-md-5">--}}
-{{--                                <div class="mb-3">--}}
-{{--                                    <label for="stock[0]['amount']" class="form-label">Quantidade</label>--}}
-{{--                                    <input type="text" class="form-control" name="stock[0]['amount']"></input>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                            <div class="col-md-2 d-flex align-items-end justify-content-end">--}}
-{{--                                <div class="mb-3">--}}
-{{--                                    <button type="button" class="btn btn-pink action-button">Adicionar</button>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
+                    <h5>Dados do estoque</h5>
+                    <div id="variations">
+                        @if($product->stocks->count())
+                            @foreach($product->stocks as $key=>$stock)
+                            <div class="row variation-item">
+                                <div class="col-md-5">
+                                    <div class="mb-3">
+                                        <label for="stock[{{ $key }}][variation]" class="form-label">Variação</label>
+                                        <input type="text" class="form-control" name="stock[{{ $key }}][variation]" value="{{ $stock->variation }}">
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="mb-3">
+                                        <label for="stock[{{ $key }}][amount]" class="form-label">Quantidade</label>
+                                        <input type="text" class="form-control" name="stock[{{ $key }}][amount]" value="{{ $stock->amount }}">
+                                    </div>
+                                </div>
+                                <div class="col-md-2 d-flex align-items-end justify-content-end">
+                                    <div class="mb-3">
+                                        <button type="button" class="btn btn-danger action-button">Remover</button>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                        @endif
+                        <div class="row variation-item">
+                            <div class="col-md-5">
+                                <div class="mb-3">
+                                    <label for="stock[{{ $product->stocks->count() }}][variation]" class="form-label">Variação</label>
+                                    <input type="text" class="form-control" name="stock[{{ $product->stocks->count() }}][variation]">
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="mb-3">
+                                    <label for="stock[{{ $product->stocks->count() }}][amount]" class="form-label">Quantidade</label>
+                                    <input type="text" class="form-control" name="stock[{{ $product->stocks->count() }}][amount]">
+                                </div>
+                            </div>
+                            <div class="col-md-2 d-flex align-items-end justify-content-end">
+                                <div class="mb-3">
+                                    <button type="button" class="btn btn-pink action-button">Adicionar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <hr>
                     <div class="col-md-12 d-flex justify-content-end" >
                         <button type="submit" class="btn btn-green">Editar produto</button>
@@ -59,7 +83,8 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const container = document.getElementById('variations');
-            let index = 1;
+            let index = {{ $product->stocks->count() ? $product->stocks->count() + 1 : 1}};
+            console.log(index);
 
             container.addEventListener('click', function (e) {
                 const target = e.target;

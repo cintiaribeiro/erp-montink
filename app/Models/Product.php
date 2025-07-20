@@ -30,4 +30,9 @@ class Product extends Model
     {
         return 'uuid';
     }
+
+    public function stocks()
+    {
+        return $this->hasMany(Stock::class);
+    }
 }
