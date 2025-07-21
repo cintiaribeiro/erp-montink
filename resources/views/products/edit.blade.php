@@ -6,7 +6,7 @@
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Produtos</h5>
-                <h6 class="card-subtitle mb-2 text-body-secondary">Cadastro de produto</h6>
+                <h6 class="card-subtitle mb-2 text-body-secondary">Atualizar produto</h6>
                 <form class="mt-4" action="{{ route('products.update', $product->uuid) }}" method="post">
                     @method('PUT')
                     @csrf
