@@ -18,7 +18,11 @@
                 </div>
 
                 <h6 class="card-subtitle mb-2 text-body-secondary">Dados do produto</h6>
-                <form>
+
+
+                <img src="https://placehold.co/200X200/e2e0e0/FFFFFF/png" alt="">
+
+                <form class="mt-3">
                     <div class="row">
                         <div class="col-md-8">
                             <div class="mb-3">

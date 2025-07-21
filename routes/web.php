@@ -3,7 +3,7 @@
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CouponController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\StockController;
+use App\Http\Controllers\StoreController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -12,6 +12,11 @@ Route::get('/', function () {
 
 Route::get('/login', function () {
     return view('login');
+});
+
+Route::controller(StoreController::class)->group(function () {
+    Route::get('/', 'index')->name('stores.index');
+    Route::get('/{product}/show', 'show')->name('stores.show');
 });
 
 Route::controller(ProductController::class)->prefix('product')->group(function () {
@@ -32,6 +37,10 @@ Route::controller(CouponController::class)->prefix('coupon')->group(function () 
    Route::get('/{coupon}/edit', 'edit')->name('coupons.edit');
    Route::put('/{coupon}/update', 'update')->name('coupons.update');
    Route::delete('/{coupon}', 'destroy')->name('coupons.destroy');
+});
+
+Route::controller(CartController::class)->prefix('cart')->group(function () {
+    Route::get('/', 'index')->name('carts.index');
 });
 
 
