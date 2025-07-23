@@ -27,12 +27,12 @@
                             <td>{{ $coupon->expiration_date->format('d-m-Y') }}</td>
                             <td>{{ $coupon->minimum_value }}</td>
                             <td>
-                                <a href="{{ route('coupons.show', $coupon->uuid) }}" class="btn btn-blue">Visualizar</a>
-                                <a href="{{ route('coupons.edit', $coupon->uuid) }}" class="btn btn-blue">Editar</a>
+                                <a href="{{ route('coupons.show', $coupon->uuid) }}" class="btn btn-green">Visualizar</a>
+                                <a href="{{ route('coupons.edit', $coupon->uuid) }}" class="btn btn-pink">Editar</a>
                                 <form action="{{ route('coupons.destroy', $coupon->uuid) }}" method="POST" class="d-inline" onsubmit="return confirm('Tem certeza que deseja excluir o cupom?')">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-red" >Excluir</button>
+                                    <button type="submit" class="btn btn-secondary" >Excluir</button>
                                 </form>
                             </td>
                         </tr>

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('product_id')->constrained()->onUpdate('cascade')->onDelete('cascade');;
             $table->string('variation')->nullable();
             $table->integer('amount');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

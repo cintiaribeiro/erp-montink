@@ -24,12 +24,12 @@
 
                                 <td>{{ $product->price }}</td>
                                 <td>
-                                    <a href="{{ route('products.show', $product->uuid) }}" class="btn btn-blue">Visualizar</a>
-                                    <a href="{{ route('products.edit', $product->uuid) }}" class="btn btn-blue">Editar</a>
+                                    <a href="{{ route('products.show', $product->uuid) }}" class="btn btn-green" >Visualizar</a>
+                                    <a href="{{ route('products.edit', $product->uuid) }}" class="btn btn-pink">Editar</a>
                                     <form action="{{ route('products.destroy', $product->uuid) }}" method="POST" class="d-inline" onsubmit="return confirm('Tem certeza que deseja excluir o produto?')">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-red" >Excluir</button>
+                                        <button type="submit" class="btn btn-secondary">Excluir</button>
                                     </form>
                                 </td>
                             </tr>

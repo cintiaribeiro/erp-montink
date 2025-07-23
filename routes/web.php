@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CouponController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StoreController;
+use App\Models\Order;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -18,6 +20,15 @@ Route::controller(StoreController::class)->group(function () {
     Route::get('/', 'index')->name('stores.index');
     Route::get('/{product}/show', 'show')->name('stores.show');
 });
+
+Route::controller(CartController::class)->prefix('cart')->group(function () {
+    Route::get('/', 'show')->name('carts.show');
+    Route::post('/add', 'add')->name('carts.add');
+    Route::get('/finish', 'finish')->name('carts.finish');
+    Route::post('/store', 'store')->name('carts.store');
+});
+
+Route::get('/validate-coupon', [CouponController::class, 'validate']);
 
 Route::controller(ProductController::class)->prefix('product')->group(function () {
     Route::get('/', 'index')->name('products.index');
@@ -39,8 +50,10 @@ Route::controller(CouponController::class)->prefix('coupon')->group(function () 
    Route::delete('/{coupon}', 'destroy')->name('coupons.destroy');
 });
 
-Route::controller(CartController::class)->prefix('cart')->group(function () {
-    Route::get('/', 'index')->name('carts.index');
+Route::controller(OrderController::class)->prefix('order')->group(function () {
+   Route::get('/', 'index')->name('orders.index');
+   Route::get('/{order}', 'show')->name('orders.show');
+   Route::post('/store', 'store')->name('orders.store');
 });
 
 

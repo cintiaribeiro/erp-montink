@@ -48,4 +48,9 @@ class CouponController extends Controller
     {
         return $this->coupnService->destroyCoupons($coupon);
     }
+
+    public function validate(Request $request)
+    {
+        return $this->coupnService->validateCoupon($request);
+    }
 }

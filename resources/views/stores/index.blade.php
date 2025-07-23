@@ -4,6 +4,7 @@
 @section('content')
     <div class="col-md-12">
         <div class="card">
+            @include('message')
             <div class="card-body">
                 <h5 class="card-title mb-5">Produtos</h5>
                 <div class="row mb-4">
@@ -15,7 +16,7 @@
                             </div>
                             <div class="p-2">
                                 <p class="mb-0"><Strong>{{ $product->name }}</Strong></p>
-                                <p><strong>{{ $product->price }}</strong></p>
+                                <p><strong>{{ number_format($product->price, 2, ',', '.') }}</strong></p>
                             </div>
                         </a>
                     </div>

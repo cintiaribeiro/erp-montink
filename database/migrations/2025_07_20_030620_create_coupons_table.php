@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('code');
             $table->decimal('discount', 10, 2);
             $table->date('expiration_date');
-            $table->string('minimum_value');
+            $table->decimal('minimum_value', 10, 2);
             $table->timestamps();
         });
     }

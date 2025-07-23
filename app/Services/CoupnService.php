@@ -61,4 +61,29 @@ class CoupnService
             return redirect()->route('coupons.index')->with('error', 'Erro ao deletar cupom!' . $e->getMessage());
         }
     }
+
+    public function validateCoupon($request)
+    {
+        $code = $request->input('code');
+        $subtotal = $request->input('subtotal');
+
+        $coupon = $this->coupon->where('code', $code)
+            ->where('minimum_value', '<=',  $subtotal)
+            ->whereDate('expiration_date', '>=', now())
+            ->first();
+
+
+        if(!$coupon){
+            return response()->json([
+                'valid' => false,
+                'message' => 'Cupom inválido ou expirado'
+            ]);
+        }
+
+        return response()->json([
+            'valid' => true,
+            'id' => $coupon->id,
+            'discount' => $coupon->discount,
+        ]);
+    }
 }
