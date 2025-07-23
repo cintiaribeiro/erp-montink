@@ -52,6 +52,9 @@ class Order extends Model
     {
         switch ($this->status){
             case 1: return 'Em processo';
+            case 2: return 'Pago';
+            case 3: return 'Cancelado';
+            case 4: return 'Entregue';
         }
     }
 }

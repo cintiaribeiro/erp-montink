@@ -10,6 +10,7 @@
                 <table class="table table-striped">
                     <thead>
                     <tr>
+                        <th>#ID</th>
                         <th>Número</th>
                         <th>Cliente</th>
                         <th>Forma de pagamento</th>
@@ -21,6 +22,7 @@
                     <tbody>
                     @forelse ($orders as $order)
                         <tr>
+                            <td>{{ $order->id }}</td>
                             <td>{{ $order->number }}</td>
                             <td>{{ $order->name_client }}</td>
                             <td>{{ $order->payment_method }}</td>

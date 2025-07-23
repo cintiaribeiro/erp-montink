@@ -1,0 +1,19 @@
+### Teste do Webhook
+POST http://localhost:8000/api/webhook/order
+Content-Type: application/json
+X-Webhook-Secret: secretwebhook
+
+{
+    "id": 1,
+    "status": "pago"
+}
+
+###
+POST http://localhost:8000/api/webhook/order
+Content-Type: application/json
+X-Webhook-Secret: secretwebhook
+
+{
+"id": 2,
+"status": "cancelado"
+}
